@@ -1,7 +1,21 @@
 import { useState, useEffect } from "react";
+import { Card } from "./Card";
+export { CardGrid };
 
 function CardGrid() {
   const [cardArray, setCardArray] = useState([]);
+
+  function shuffleArray(array) {
+    const newArray = [...array];
+    let lastIndex = newArray.length - 1;
+    while (lastIndex > 0) {
+      let randomIndex = Math.floor(Math.random() * (lastIndex + 1));
+      let temporaryValue = newArray[lastIndex];
+      newArray[lastIndex] = newArray[randomIndex];
+      newArray[randomIndex] = temporaryValue;
+      lastIndex -= 1;
+    }
+  }
 
   useEffect(() => {
     if (localStorage.getItem("pokemonArray")) {
@@ -41,4 +55,17 @@ function CardGrid() {
       fetchPokemonData();
     }
   }, []);
+
+  return (
+    <>
+      {cardArray.map((obj) => (
+        <Card
+          key={obj.id}
+          name={obj.name}
+          picture={obj.sprite}
+          onClick={() => shuffleArray(cardArray)}
+        />
+      ))}
+    </>
+  );
 }
