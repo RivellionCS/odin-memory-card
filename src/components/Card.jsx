@@ -1,8 +1,8 @@
 export { Card };
 
-function Card({ name, id, picture }) {
+function Card({ name, picture }) {
   return (
-    <button key={id}>
+    <button>
       <img src={picture} alt={name} />
       <p>{name}</p>
     </button>
