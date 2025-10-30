@@ -1,19 +1,47 @@
 import { useState, useEffect } from "react";
 import { Card } from "./Card";
+import { Scoreboard } from "./Scoreboard";
 export { CardGrid };
 
 function CardGrid() {
   const [cardArray, setCardArray] = useState([]);
+  const [score, setScore] = useState({ score: 0, bestScore: 0 });
+  const [clickedArray, setClickedArray] = useState([]);
 
-  function shuffleArray(array) {
-    const newArray = [...array];
-    let lastIndex = newArray.length - 1;
-    while (lastIndex > 0) {
-      let randomIndex = Math.floor(Math.random() * (lastIndex + 1));
-      let temporaryValue = newArray[lastIndex];
-      newArray[lastIndex] = newArray[randomIndex];
-      newArray[randomIndex] = temporaryValue;
-      lastIndex -= 1;
+  function shuffleArray() {
+    setCardArray((prev) => {
+      const newArray = [...prev];
+      let lastIndex = newArray.length - 1;
+      while (lastIndex > 0) {
+        let randomIndex = Math.floor(Math.random() * (lastIndex + 1));
+        let temporaryValue = newArray[lastIndex];
+        newArray[lastIndex] = newArray[randomIndex];
+        newArray[randomIndex] = temporaryValue;
+        lastIndex -= 1;
+      }
+      return newArray;
+    });
+  }
+
+  function increaseScore() {
+    setScore((prev) => ({
+      score: prev.score + 1,
+      bestScore: Math.max(prev.bestScore, prev.score + 1),
+    }));
+  }
+
+  function resetScore() {
+    setScore((prev) => ({ score: 0, bestScore: prev.bestScore }));
+  }
+
+  function gameLogic(cardId) {
+    shuffleArray();
+    if (clickedArray.includes(cardId)) {
+      setClickedArray([]);
+      resetScore();
+    } else {
+      setClickedArray([...clickedArray, cardId]);
+      increaseScore();
     }
   }
 
@@ -58,12 +86,13 @@ function CardGrid() {
 
   return (
     <>
+      <Scoreboard score={score.score} bestScore={score.bestScore} />
       {cardArray.map((obj) => (
         <Card
           key={obj.id}
           name={obj.name}
           picture={obj.sprite}
-          onClick={() => shuffleArray(cardArray)}
+          onClick={() => gameLogic(obj.id)}
         />
       ))}
     </>
