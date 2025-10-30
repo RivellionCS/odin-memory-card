@@ -74,6 +74,7 @@ function CardGrid() {
             id: obj.id,
             sprite: obj.sprites.other["official-artwork"].front_default,
           }));
+          localStorage.setItem("pokemonArray", JSON.stringify(filteredData));
           setCardArray(filteredData);
         } catch (error) {
           console.log("Error fetching data: " + error);
