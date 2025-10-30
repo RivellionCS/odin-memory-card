@@ -1,8 +1,8 @@
 export { Card };
 
-function Card({ name, picture }) {
+function Card({ name, picture, onClick }) {
   return (
-    <button>
+    <button onClick={onClick}>
       <img src={picture} alt={name} />
       <p>{name}</p>
     </button>
