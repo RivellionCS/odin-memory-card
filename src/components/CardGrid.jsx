@@ -86,7 +86,7 @@ function CardGrid() {
   }, []);
 
   return (
-    <>
+    <div id="card-game">
       <Scoreboard score={score.score} bestScore={score.bestScore} />
       <div id="card-grid">
         {cardArray.map((obj) => (
@@ -98,6 +98,6 @@ function CardGrid() {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }
