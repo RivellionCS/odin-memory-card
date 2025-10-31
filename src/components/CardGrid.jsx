@@ -71,7 +71,9 @@ function CardGrid() {
             responses.map((response) => response.json())
           );
           const filteredData = data.map((obj) => ({
-            name: obj.forms[0].name,
+            name:
+              obj.forms[0].name.charAt(0).toUpperCase() +
+              obj.forms[0].name.slice(1),
             id: obj.id,
             sprite: obj.sprites.other["official-artwork"].front_default,
           }));
