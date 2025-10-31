@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Card } from "./Card";
 import { Scoreboard } from "./Scoreboard";
+import "../styles/CardGrid.css";
 export { CardGrid };
 
 function CardGrid() {
