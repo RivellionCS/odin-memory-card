@@ -1,8 +1,9 @@
 export { Footer };
+import "../styles/Footer.css";
 
 function Footer() {
   return (
-    <footer>
+    <footer id="footer">
       <a
         href="https://github.com/RivellionCS/odin-memory-card"
         target="_blank"
