@@ -88,14 +88,16 @@ function CardGrid() {
   return (
     <>
       <Scoreboard score={score.score} bestScore={score.bestScore} />
-      {cardArray.map((obj) => (
-        <Card
-          key={obj.id}
-          name={obj.name}
-          picture={obj.sprite}
-          onClick={() => gameLogic(obj.id)}
-        />
-      ))}
+      <div id="card-grid">
+        {cardArray.map((obj) => (
+          <Card
+            key={obj.id}
+            name={obj.name}
+            picture={obj.sprite}
+            onClick={() => gameLogic(obj.id)}
+          />
+        ))}
+      </div>
     </>
   );
 }
