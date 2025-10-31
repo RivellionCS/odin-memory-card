@@ -1,8 +1,9 @@
 export { Scoreboard };
+import "../styles/Scoreboard.css";
 
 function Scoreboard({ score, bestScore }) {
   return (
-    <div>
+    <div id="scoreboard">
       <h2>Best Score: {bestScore}</h2>
       <h2>Current Score: {score}</h2>
     </div>
