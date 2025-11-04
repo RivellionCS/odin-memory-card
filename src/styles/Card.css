@@ -1,0 +1,13 @@
+button {
+  transform: transform 0.2s ease, opacity 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+button:active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
