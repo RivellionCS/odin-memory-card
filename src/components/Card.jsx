@@ -1,4 +1,5 @@
 export { Card };
+import "../styles/Card.css";
 
 function Card({ name, picture, onClick }) {
   return (
