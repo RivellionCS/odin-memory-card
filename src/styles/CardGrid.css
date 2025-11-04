@@ -13,3 +13,23 @@
   gap: 50px;
   padding: 20px 50px;
 }
+
+@media (max-width: 1024px) {
+  #card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 30px;
+    padding: 15px 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  #card-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 15px;
+    padding: 10px 25px;
+  }
+}
